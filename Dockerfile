@@ -1,8 +1,8 @@
-FROM centos:centos7
+FROM photon:latest
 LABEL maintainer="blog.v12n.io"
 
 # Update packages and install new ones
-RUN yum -y update && yum -y install curl unzip git wget net-tools bind-utils
+RUN tdnf -y install curl unzip git wget
 
 # Add version
 ADD VERSION .
