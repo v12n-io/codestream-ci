@@ -2,6 +2,9 @@ FROM ubuntu:latest as baseimage
 LABEL maintainer="blog.v12n.io"
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -y && apt-get upgrade -y && apt-get install --no-install-recommends wget git unzip docker -y && apt-get clean
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install --no-install-recommends wget git unzip docker -y
+RUN apt-get clean
 
 FROM baseimage as finalimage
