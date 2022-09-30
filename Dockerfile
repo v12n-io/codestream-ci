@@ -1,10 +1,8 @@
-FROM ubuntu:latest as baseimage
+FROM photon:latest
 LABEL maintainer="blog.v12n.io"
 
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install --no-install-recommends wget git unzip docker -y
-RUN apt-get clean
-
-FROM baseimage as finalimage
+RUN tdnf update -y && \
+    tdnf install -y curl unzip git wget tar gzip gawk bindutils jq coreutils && \
+    tdnf clean all && \
+    tdnf autoremove -y && \
+    tdnf clean all
